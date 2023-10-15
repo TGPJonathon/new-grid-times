@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/macro';
+import { QUERIES } from '../../constants';
 
 const OpinionStory = ({ id, title, author, avatar }) => {
   return (
@@ -16,7 +17,17 @@ const OpinionStory = ({ id, title, author, avatar }) => {
 };
 
 const Wrapper = styled.article`
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
   color: var(--color-gray-900);
+  padding: 16px 0;
+  gap: 16px;
+
+  @media ${QUERIES.tabletOnly} {
+    display: revert;
+    max-width: 180px;
+  }
 `;
 
 const Avatar = styled.img`

@@ -6,6 +6,7 @@ import { MARKET_DATA, SPORTS_STORIES } from '../../data';
 import MarketCard from '../MarketCard';
 import SectionTitle from '../SectionTitle';
 import MiniStory from '../MiniStory';
+import { QUERIES } from '../../constants';
 
 const SpecialtyStoryGrid = () => {
   return (
@@ -47,14 +48,51 @@ const SpecialtyStoryGrid = () => {
 const Wrapper = styled.div`
   display: grid;
   gap: 48px;
+
+  @media ${QUERIES.laptopAndUp} {
+    grid-template-columns: 1fr 1fr;
+  }
 `;
 
-const MarketsSection = styled.section``;
+const MarketsSection = styled.section`
+  @media ${QUERIES.laptopAndUp} {
+    border-right: solid 1px var(--color-gray-300);
+    padding-right: 16px;
+  }
+`;
 
-const MarketCards = styled.div``;
+const MarketCards = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
 
-const SportsSection = styled.section``;
+  @media ${QUERIES.tabletAndUp} {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+`;
 
-const SportsStories = styled.div``;
+const SportsSection = styled.section`
+  @media ${QUERIES.tabletOnly} {
+    max-width: calc(100vw - 50px);
+  }
+
+  @media ${QUERIES.laptopAndUp} {
+    margin-left: -32px;
+    max-width: 600px;
+  }
+`;
+
+const SportsStories = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+
+  @media ${QUERIES.tabletAndUp} {
+    grid-template-columns: revert;
+    grid-auto-columns: 150px;
+    grid-auto-flow: column;
+    overflow-x: scroll;
+  }
+`;
 
 export default SpecialtyStoryGrid;
